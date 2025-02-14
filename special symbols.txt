@@ -1,0 +1,25 @@
+~ tide 
+
+< less than 
+
+() paratheses 
+
+* star 
+
+.dot 
+
+[] brackets 
+
+^caret 
+
+- hyphen 
+
+{} braces 
+
+& ampersand
+
+/ forward slash 
+
+\ back slash 
+
+<> 
