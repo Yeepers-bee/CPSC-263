@@ -41,6 +41,7 @@ def user_input():
     return temp
 
 
+#only works if directly executed
 
 if __name__ == "__main__":
     main()
