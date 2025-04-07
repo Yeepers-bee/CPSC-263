@@ -1,0 +1,11 @@
+#f = open("A.txt", "w")
+
+outfile = open("a.txt", "w")
+outfile.write("test")
+outfile.close()
+
+
+
+
+while line != '':
+    
