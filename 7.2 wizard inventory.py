@@ -1,8 +1,43 @@
 import random
+import sys
 
 def main():
+
+
+    try:
+        with open('wizard_all_items.txt', 'r') as file:
+            file_exists = file
+        
+    except FileNotFoundError:
+        print("Cannot find wizard items. Quitting program.")
+        sys.exit()
+    except Exception as e:
+        print(type(e), e)
+        print("exception occured. Quitting program.")
+        sys.exit()
+    finally:
+        file.close()
+
+
     command_menu()
-    
+ 
+    try:
+        with open('wizard_inventory.txt', 'r') as file:
+            FILENAME = file
+    except FileNotFoundError:
+        print("\nCould not find inventory file!")
+              #create a new file
+        f = open("wizard_inventory.txt", "x")
+        print("Wizard is starting with no inventory.\n")
+    except Exception as e:
+        print(type(e), e)
+        sys.exit()
+    finally:
+        file.close()
+        
+ 
+        
+
     while True:
         print('')
         command_occured = False
@@ -26,7 +61,7 @@ def main():
             print("Bye!")
             return
         elif not command_occured:
-            print("ERROR! Invalid command.")
+            print("ERROR! Invalid command. Try again.")
     
             
             
@@ -41,19 +76,28 @@ def walk():
         line_count = line_count + 1
     ran_num = random.randint(1, line_count)
     print("While walking down a path, you see " + str(all_items[ran_num]),  end='')
-    user_input = input("Do you want to grab it? (y/n): ")
-    if user_input == 'y':
+    while True:
+        user_input = input("Do you want to grab it? (y/n): ")
 
-        if check() == True:
-            print("You picked up " + str(all_items[ran_num]), end='')
-            outfile = open('wizard_inventory.txt', 'a')
-            outfile.write(str(all_items[ran_num]))
-            outfile.close()
+        if user_input == 'y':
+
+            if check() == True:
+                print("You picked up " + str(all_items[ran_num]), end='')
+                outfile = open('wizard_inventory.txt', 'a')
+                outfile.write(str(all_items[ran_num]))
+                outfile.close()
+                break
+            else:
+                print("You can't carry any more items. Drop something first.")
+                break
+        if user_input == 'n':
+            break
         else:
-            print("You can't carry any more items. Drop something first.")
-    if user_input == 'n':
-        pass
-        
+            print("Invalid input. Please enter either y or n.")
+            
+            
+
+
 
 
 def check():
@@ -83,7 +127,7 @@ def show():
 def drop():
     with open('wizard_inventory.txt', 'r') as file:
         wizard_inventory = file.readlines()
-    user_input = input("Number: ")
+    user_input = input("drop Number: ")
     line_count = 0
     dropped = False
     
@@ -98,7 +142,7 @@ def drop():
             break
     
     if not dropped:
-        print("Invalid number to drop.")
+        print("Invalid item to drop.")
 
 def command_menu():
     print("walk - Walk down the path")

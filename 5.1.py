@@ -1,6 +1,4 @@
 
-
-
 #determines country that has won the most campionships 
 def main():
     dictionary = {}
