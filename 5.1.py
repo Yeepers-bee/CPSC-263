@@ -18,9 +18,7 @@ def main():
             
             temp = file.readline()
             print(f"Dictionary now: {dictionary}")
-        print(dictionary)
         sorted_dictionary = dict(sorted(dictionary.items()))
-        print(sorted_dictionary)
         headline(sorted_dictionary)
 
 

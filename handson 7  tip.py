@@ -42,7 +42,7 @@ def get_tip():
 
 def output(meal, tip):
     print("\nOUTPUT")
-    print(f"{'Cost of meal:':<15}{meal}")
+    print(f"{'Cost of meal:':<15}{meal:>.2f}")
     print(f"{'Tip percent:':<15}{tip}%")
     tip_amount = calculate_tip(meal, tip)
     total_amount = tip_amount + meal

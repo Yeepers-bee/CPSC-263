@@ -94,33 +94,20 @@ def runGame():
                 return # game over
             
         #check if imposter has been hit
-
         for coords in coordsImposterArray:
             if wormCoords[HEAD]['x'] == coords['x']:
                 print(coords['x'])
-                return
-            if wormCoords[HEAD]['y'] == coords['y']:
-                print(coords['y'])
-                return
-            
-
-
-
+                if wormCoords[HEAD]['y'] == coords['y']:
+                    print(coords['y'])
+                    return #game over
 
         # check if worm has eaten an apple
         if wormCoords[HEAD]['x'] == apple['x'] and wormCoords[HEAD]['y'] == apple['y']:
             # don't remove worm's tail segment
 
-
-            #ADDED BY ME
+            #checks if score is high enough to create a new imposter. 
             imposterNum = imposterAmount(len(wormCoords) - 3)
             coordsImposterArray = coordsImposter(imposterNum)
-
-
-
-
-
-
 
             apple = getRandomLocation() # set a new apple somewhere
             
@@ -174,8 +161,8 @@ def checkForKeyPress():
 
 def showStartScreen():
     titleFont = pygame.font.Font('freesansbold.ttf', 100)
-    titleSurf1 = titleFont.render('Wormy!', True, WHITE, DARKGREEN)
-    titleSurf2 = titleFont.render('Wormy!', True, GREEN)
+    titleSurf1 = titleFont.render('Imposter!', True, WHITE, DARKGREEN)
+    titleSurf2 = titleFont.render('Imposter!', True, GREEN)
 
     degrees1 = 0
     degrees2 = 0
